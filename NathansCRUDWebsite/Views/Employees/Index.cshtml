@@ -1,0 +1,55 @@
+﻿@model EmployeesViewsModel
+
+<h2>Nathan's Employees</h2><br />
+<br />
+<button><a asp-action="NewEmployee" asp-controller="Employees">Create A New Employee!</a></button>
+<table class="table table-bordered">
+    <tr>
+        <th>Employee ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Date of Birth</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @{
+        for (int i = 0; i < EmployeesViewsModel.Employees.Count; i++)
+        {
+            <tr>
+                <td>@EmployeesViewsModel.Employees[i].EmployeeID</td>
+                <td>@EmployeesViewsModel.Employees[i].FirstName</td>
+                <td>@EmployeesViewsModel.Employees[i].LastName</td>
+                <td>@EmployeesViewsModel.Employees[i].EmailAddress</td>
+                <td>@EmployeesViewsModel.Employees[i].DateOfBirth</td>
+              
+                <td>
+                    <form asp-action="DeleteEmployee" asp-controller="Employees">
+                        <input type="hidden" name="idToDelete" value="@EmployeesViewsModel.Employees[i].EmployeeID" />
+                        <input class="btn btn-default" type="button" onclick="confirmDelete(this.form, '@EmployeesViewsModel.Employees[i].EmployeeID')" value="Delete" />
+                    </form>
+                </td>
+                <td>
+                    <form asp-action="UpdatedPage" asp-controller="Employees">
+                        <input type="hidden" name="EmployeeID" value="@EmployeesViewsModel.Employees[i].EmployeeID" />
+                        <input type="hidden" name="FirstName" value="@EmployeesViewsModel.Employees[i].FirstName" />
+                        <input type="hidden" name="LastName" value="@EmployeesViewsModel.Employees[i].LastName" />
+                        <input type="hidden" name="EmailAddress" value="@EmployeesViewsModel.Employees[i].EmailAddress" />
+                        <input type="hidden" name="DateOfBirth" value="@EmployeesViewsModel.Employees[i].DateOfBirth" />
+                        <input class="btn btn-default" type="submit" value="Update" />
+                    </form>
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+<script>
+    function confirmDelete(form, name) {
+        if (confirm('Delete' + name + '?')) {
+            form.submit();
+        }
+    }
+</script>
+
+

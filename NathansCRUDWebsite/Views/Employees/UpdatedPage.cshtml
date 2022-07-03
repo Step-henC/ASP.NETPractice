@@ -1,0 +1,22 @@
+﻿@model EmployeesViewsModel
+
+@{
+    ViewData["Title"] = "UpdatedPage";
+}
+
+
+<h2>Update Employee</h2>
+<form asp-action="UpdateEmployee" asp-controller="Employees">
+    <input type="hidden" name="EmployeeID" value="@Model.EmployeesUpdate.EmployeeID" />
+    <br />
+    <h4>Enter the new Data for the Employee</h4>
+    <br />
+    <p>First Name: </p><input type="text" name="FirstName" value="@Model.EmployeesUpdate.FirstName" required/>
+    <p>Last Name: </p><input type="text" name="LastName" value="@Model.EmployeesUpdate.LastName" required/>
+    <p>Email: </p><input type="text" name="EmailAddress" value="@Model.EmployeesUpdate.EmailAddress" required/>
+      <p>EmployeeID: </p><input type="number" name="EmployeeID" value="@Model.EmployeesUpdate.EmployeeID" required/>
+    <p>Date Of Birth: </p><input type="datetime" name="DateOfBirth" value="@Model.EmployeesUpdate.DateOfBirth" required/>
+  
+    <input type="submit" value="Update" />
+</form>
+

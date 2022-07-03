@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "NewEmployee";
+}
+
+
+<h2>Add New Employee</h2>
+<form asp-action="CreateEmployee" asp-controller="Employees">
+    <p>First Name: </p><input type="text" name="FirstName" />
+    <p>Last Name: </p><input type="text" name="LastName" />
+    <p>Email: </p><input type="text" name="EmailAddress" />
+    <p>Employee ID: </p><input type="number" name="EmployeeID" />
+    <p>Date of Birth: </p><input type="datetime" name="DateOfBirth" />
+    <input type="submit" value="Create" />
+</form>
